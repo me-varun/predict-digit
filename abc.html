@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="MyDiv" style="width: 25%; height: 50%;">
+        <canvas id = "canvas-main" ></canvas> </div>
+        <button onclick="toimg()">click</button>
+        <button onclick="clr()">clear</button>
+        <script>
+
+const canvas = document.querySelector('#canvas-main');
+    var ctx = canvas.getContext("2d");
+    var hl =  document.getElementById("MyDiv")
+
+    function clr(){
+        console.log("called clr")
+    ctx.fillStyle = 'black';
+    
+    ctx.beginPath();
+    ctx.fillRect(0, 0, hl.offsetWidth, hl.offsetHeight);
+    // ctx.stroke();
+    // ctx.fill()
+    }
+   
+
+function toimg(){
+    // var canvas = document.getElementById("#canvas-main")
+    canvas.toBlob(function(blob){
+    console.log(canvas)
+    link.href = URL.createObjectURL(blob);
+    console.log(blob);
+    console.log(link.href); // this line should be here
+  },'image/png');
+}
+function resizecan(){
+    // hl =  document.getElementById("MyDiv")
+    // console.log("called REsize")
+    canvas.height = hl.offsetHeight;
+    // window.innerHeight;
+    canvas.width = hl.offsetWidth;
+ctx.fillRect(0,0,canvas.width, canvas.height);
+    
+}
+
+window.addEventListener('load',()=>{
+    // var canvas = document.querySelector('#canvas-main');
+    // var ctx = canvas.getContext("2d");
+        //Resizing
+    
+    canvas.height = hl.offsetHeight;
+    // window.innerHeight;
+    canvas.width = hl.offsetWidth;
+    ctx.fillStyle = 'black';
+ctx.fillRect(0,0,canvas.width, canvas.height);
+    // window.innerWidth;
+
+    let painting =false;
+
+    function startPosition(e){
+        painting=true;
+        draw(e);
+    }
+    function finishPosition(){
+        painting=false;
+        ctx.beginPath();
+    }
+    function draw(e){
+        if(!painting) return;
+        ctx.lineWidth =13;
+        ctx.lineCap ="round";
+        ctx.strokeStyle = 'white';
+        // '#ff0000'
+        ctx.lineTo(e.clientX,e.clientY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(e.clientX,e.clientY);
+    }
+
+    //Event Listner
+
+    canvas.addEventListener("mousedown",startPosition);
+    canvas.addEventListener("mouseup",finishPosition);
+    canvas.addEventListener("mousemove",draw);
+    window.addEventListener("resize",resizecan);
+    })
+    </script>
+    <a id="link" href="#">abc</a>
+    
+</body>
+</html>
