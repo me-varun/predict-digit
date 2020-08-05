@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokedex</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/classifier.css" />
+    <link rel="stylesheet" href="/static/popOutPg.css">
+
+</head>
+
+<body>
+    <div class=bg-popOutPg>
+    <div class="popOutPg">
+        <div class="leftBox">
+            <div class="lbTextBox">
+                <div class="lbtbHead">Pokedex</div>
+                <!-- <div class="lbtbLink"><i class="far fa-heart"></i><i class="fas fa-share-alt"></i></div> -->
+                <div class="lbtbSec">Color your way through the palettes of famous paintings</div>
+                <div class="lbtbBtn">Launch experiment</div>
+            </div>
+        </div>
+        <div class="rightBox"></div>
+    </div>
+</div>
+    <!--  -->
+    <div class="navbar">
+        <div class="Uploadyourmodel" style="float: right;">
+            <input type="file" id="modelUpload" name="modelFilepath" hidden="hidden" value="Upload Your Model"
+                accept=".json">
+            <input id="upld-btn" type="button" value="Upload Your Model" class="button"/>
+            <!-- <h3>Uploaded model</h3> -->
+        </div>
+        <ul>
+            <li> <img id="navimg" src="logo.svg" /> </li>
+            <li> presents</li>
+            <!-- <br/> -->
+            <li style="font-size: 5vw; font-weight: bolder;"> Pokedex</li>
+        </ul>
+
+    </div>
+
+    <!--  -->
+    <!-- <div class="main">
+            <div class="title">
+                <h3>Pokedex</h3>
+            </div>
+        </div> -->
+        <img id="image-preview" style="display: none;"/>
+        <div id="msgpop">This Message will get remove in 3 sec</div>
+
+    <div class="container">
+        <div class="left">
+            <div class="panel">
+                <!-- <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                <label for="file-upload" id="file-drag" class="upload-box">
+                    <div id="upload-caption">Choose your Pokemon</div>
+                    <img id="image-preview" class="hidden" />
+                </label> -->
+                <div  id = "panel-id">
+                    <canvas id = "canvas-main" ></canvas> </div>
+                </div>
+            </div>
+        
+        <div class="middle">
+            <ul>
+                <li><input type="button" value="Guess The Pokemon" class="button" onclick="predict_one();" /></li>
+                <li><input type="button" style="margin-top: 12px;" value="Clear" class="button" onclick="clearImage();" /></li>
+            </ul>
+
+        </div>
+        <div class="right">
+            <div style="text-align: center; font-size: 6vw; color: white;" id="pred-result2">?</div>
+            <!-- class="hidden"-->
+        </div>
+    </div>
+</div>
+<script>
+
+function popmsg(popins) {
+            var x = document.getElementById("msgpop");
+            if (popins != undefined) {
+                x.innerHTML = popins;
+            }
+            x.className = "show";
+
+            setTimeout(function() {
+                x.className = x.className.replace("show", "");
+            }, 3000);
+        }
+
+</script>
+
+</body>
+
+<footer>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
+    <script src="/static/classifier.js"></script>
+</footer>
+
+</html>
