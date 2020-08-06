@@ -112,7 +112,7 @@ async function predict_one() {
  var _res = await toimg()
   .then((_res) => {
     console.log("Should Be Working Fine" + _res)
-    setTimeout(predict,2000);
+    setTimeout(predict,500);
     // predict();
   })
 }
@@ -170,8 +170,12 @@ async function predict() {
   console.log("Predictions are")
   console.log(val)
   console.log(prediction);
+  console.log(prediction[val])
 
   predResult.innerHTML = val;
+  if (prediction[val] < 0.8){
+    predResult.innerHTML = "Not Sure";
+  }
   show(predResult)
   // })
 }
