@@ -45,7 +45,7 @@ var model = undefined;
 
 
 async function initialize() {
-  model = await tf.loadLayersModel('model.json');
+  model = await tf.loadLayersModel(window.location.href+'model.json');
 }
 
 var upld_model = document.getElementById('upld-btn')
@@ -304,7 +304,7 @@ window.addEventListener('load', () => {
   }
   function draw(e) {
     if (!painting) return;
-    ctx.lineWidth = 13;
+    ctx.lineWidth = 30;
     ctx.lineCap = "round";
     ctx.strokeStyle = 'white';
     // '#ff0000'

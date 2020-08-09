@@ -4,31 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pokedex</title>
+    <title>funoppia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/static/classifier.css" />
-    <link rel="stylesheet" href="/static/popOutPg.css">
+    <link rel="stylesheet" type="text/css" href="static/classifier.css" />
+    <link rel="stylesheet" href="static/popOutPg.css">
+    <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+        <symbol id="icon-price-tags" viewBox="0 0 40 32">
+        <path d="M38.5 0h-12c-0.825 0-1.977 0.477-2.561 1.061l-14.879 14.879c-0.583 0.583-0.583 1.538 0 2.121l12.879 12.879c0.583 0.583 1.538 0.583 2.121 0l14.879-14.879c0.583-0.583 1.061-1.736 1.061-2.561v-12c0-0.825-0.675-1.5-1.5-1.5zM31 12c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"></path>
+        <path d="M4 17l17-17h-2.5c-0.825 0-1.977 0.477-2.561 1.061l-14.879 14.879c-0.583 0.583-0.583 1.538 0 2.121l12.879 12.879c0.583 0.583 1.538 0.583 2.121 0l0.939-0.939-13-13z"></path>
+        </symbol>
+        </defs>
+        </svg>
+
+
 
 </head>
 
 <body>
     <div class=bg-popOutPg>
-    <div class="popOutPg">
-        <div class="leftBox">
+        <div class="popOutPg">
+            <div class="leftBox">
             <div class="lbTextBox">
-                <div class="lbtbHead">Guess The Number</div>
+                <div class="lbtbHead">What a Number!</div>
                 <!-- <div class="lbtbLink"><i class="far fa-heart"></i><i class="fas fa-share-alt"></i></div> -->
-                <div class="lbtbSec">Color your way through the palettes of famous paintings</div>
+                <div class="lbtbSec"> Scribble a number and let the computer guess what you write! Oh! Is it possible?
+                </br> </br><strong style="font-weight: bolder;"> Working</strong> </br></br> Draw a number on the black area, and click on Predict button. The prediction is shown in the box present on the right. By default, a pre-trained model is being used for making predictions, but you have a choice to upload your own model too! 
+            </br></br> <svg class="icon icon-price-tags"><use xlink:href="#icon-price-tags"></use></svg> CNN, Neural Networks, Tensorflowjs</div>
                 <div class="lbtbBtn">Launch experiment</div>
             </div>
         </div>
         <div class="rightBox"></div>
     </div>
 </div>
-    <!--  -->
-    <div class="navbar">
-        <div class="Uploadyourmodel" style="float: right;">
-            <input type="file" id="modelUpload" name="modelFilepath" hidden="hidden" value="Upload Your Model"
+<!--  -->
+<div class="navbar">
+    <div class="Uploadyourmodel" style="float: right;">
+        <input type="file" id="modelUpload" name="modelFilepath" hidden="hidden" value="Upload Your Model"
                 accept=".json">
             <input id="upld-btn" type="button" value="Upload Your Model" class="button"/>
             <!-- <h3>Uploaded model</h3> -->
@@ -37,9 +49,9 @@
             <li> <img id="navimg" src="logo.svg" /> </li>
             <li> presents</li>
             <!-- <br/> -->
-            <li style="font-size: 5vw; font-weight: bolder;"> Guess The Number</li>
+            <li style="font-size: 5vw; font-weight: bolder;"> What a Number!</li>
         </ul>
-
+        
     </div>
 
     <!--  -->
@@ -50,54 +62,55 @@
         </div> -->
         <img id="image-preview" style="display: none;"/>
         <div id="msgpop">This Message will get remove in 3 sec</div>
-
-    <div class="container">
-        <div class="left">
-            <div class="panel">
-                <!-- <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
-                <label for="file-upload" id="file-drag" class="upload-box">
-                    <div id="upload-caption">Choose your Pokemon</div>
+        
+        <div class="container">
+            <div class="left">
+                <div class="panel">
+                    <!-- <input id="file-upload" class="hidden" type="file" accept="image/x-png,image/gif,image/jpeg" />
+                        <label for="file-upload" id="file-drag" class="upload-box">
+                            <div id="upload-caption">Choose your Pokemon</div>
                     <img id="image-preview" class="hidden" />
                 </label> -->
                 <div  id = "panel-id">
                     <canvas id = "canvas-main" ></canvas> </div>
                 </div>
             </div>
-        
-        <div class="middle">
-            <ul>
-                <li><input type="button" value="Guess The Number" class="button" onclick="predict_one();" /></li>
-                <li><input type="button" style="margin-top: 12px;" value="Clear" class="button" onclick="clearImage();" /></li>
-            </ul>
-
-        </div>
-        <div class="right">
-            <div style="text-align: center; font-size: 6vw; color: white;" id="pred-result2">?</div>
+            
+            <div class="middle">
+                <ul>
+                    <li><input type="button" value="Guess The Number" class="button" onclick="predict_one();" /></li>
+                    <li><input type="button" style="margin-top: 12px;" value="Clear" class="button" onclick="clearImage();" /></li>
+                </ul>
+                
+            </div>
+            <div class="right">
+                <div style="text-align: center; font-size: 6vw; color: white;" id="pred-result2">?</div>
             <!-- class="hidden"-->
         </div>
     </div>
 </div>
 <script>
-
-function popmsg(popins) {
-            var x = document.getElementById("msgpop");
-            if (popins != undefined) {
-                x.innerHTML = popins;
-            }
-            x.className = "show";
-
-            setTimeout(function() {
+    
+    function popmsg(popins) {
+        var x = document.getElementById("msgpop");
+        if (popins != undefined) {
+            x.innerHTML = popins;
+        }
+        x.className = "show";
+        
+        setTimeout(function() {
                 x.className = x.className.replace("show", "");
             }, 3000);
         }
-
-</script>
+        
+    </script>
 
 </body>
 
 <footer>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-    <script src="/static/classifier.js"></script>
+    
+    <script src="static/classifier.js"></script>
 </footer>
 
 </html>

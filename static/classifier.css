@@ -6,7 +6,7 @@ html,body{
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #303960;
+  background-color: #184d47;
   box-sizing: border-box;
 }
 
@@ -28,6 +28,7 @@ html,body{
 #navimg{
   display: inline-block;
   width: 20%;
+  padding-right: 2%;
   /* padding-left: 13%; */
 }
 
@@ -88,9 +89,9 @@ html,body{
   border: none;
   text-decoration: none;
   outline: none;
-  color: #303960;
-  background-color:#ea9a96;
-  border: 2px solid #ea9a96;
+  color: rgb(41, 41, 41);
+  background-color:#eebb4d;
+  border: 2px solid #eebb4d;
    /* rgb(0, 120, 212); */
   padding: 0.5rem 1.2rem;
   border-radius: 5px;
@@ -144,9 +145,10 @@ border-radius: 6px;
 }
 
 .Uploadyourmodel>input{
-  background-color: #f8b24f;
-  border: 2px solid #f8b24f;
-  z-index: 50;
+  background-color: #96bb7c;
+  border: 2px solid #96bb7c;
+  /* z-index: 50; */
+  color:white
 }
 /* 
 .Uploadyourmodel>input:hover{

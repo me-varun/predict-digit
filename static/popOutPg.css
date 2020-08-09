@@ -38,7 +38,7 @@
 .popOutPg .rightBox {
     height: 100%;
     width: 55%;
-    background: url('../Arima\ Kousei\ -\ Your\ Lie\ In\ April.png') no-repeat;
+    background: url('../whatanum.png') no-repeat;
     background-size: cover;
     background-position: center center;
     border-radius: 0 20px 20px 0;
@@ -68,7 +68,7 @@
 }
 
 .popOutPg .leftBox .lbTextBox .lbtbSec {
-    color: grey;
+    color: rgb(71, 71, 71);
     font-weight: 500;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
@@ -80,11 +80,25 @@
     font-weight: bold;
     font-size: 14px;
     padding: 10px 10px;
-    background: #4285F4;
+    background: #ff026f;
     width: 200px;
     text-align: center;
-    border-radius: 15px;
+    border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 20px;
     cursor: pointer;
+    /* transition: 1s ease-out; */
 }
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+  
+  .icon-price-tags {
+    width: 1.5em;
+  }
