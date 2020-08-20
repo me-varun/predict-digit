@@ -4,7 +4,7 @@ var web_url_for_model = window.location.href
 const canvas = document.querySelector('#canvas-main');
 var ctx = canvas.getContext("2d");
 var hl = document.getElementById("panel-id")
-
+const offset = tf.scalar(127.0);
 
 // Add event listeners
 // fileDrag.addEventListener("dragover", fileDragHover, false);
@@ -159,7 +159,7 @@ async function predict() {
 
   // toimg()
 
-  let tensorImg = tf.browser.fromPixels(imagePreview).resizeNearestNeighbor([28, 28]).mean(2).toFloat().expandDims(2).expandDims(0);
+  let tensorImg = tf.browser.fromPixels(imagePreview).resizeNearestNeighbor([28, 28]).mean(2).toFloat().sub(offset).div(offset).expandDims(2).expandDims(0);
   // console.log(tensorImg.data)
   // previewFile(tensorImg.encodePng())
   var prediction = await model.predict(tensorImg).data();
@@ -173,7 +173,7 @@ async function predict() {
   console.log(prediction[val])
 
   predResult.innerHTML = val;
-  if (prediction[val] < 0.8){
+  if (prediction[val] < 0.4){
     predResult.innerHTML = "Not Sure";
   }
   show(predResult)
